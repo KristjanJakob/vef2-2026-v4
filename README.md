@@ -1,16 +1,53 @@
-# React + Vite
+# Vefforritun 2 – Verkefni 4
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React framendi fyrir fréttavef sem tengist vefþjónustu úr verkefni 3.
 
-Currently, two official plugins are available:
+## Virkni
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Verkefnið inniheldur:
 
-## React Compiler
+- Forsíðu sem birtir fréttir með paging
+- Fréttasíðu sem birtir staka frétt
+- Síðu til að búa til frétt með höfundi
+- Villumeðhöndlun fyrir API villur
+- Routing með React Router
+- Components með props og state
+- Base URL fyrir API geymt í env breytu
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tæki og tól
 
-## Expanding the ESLint configuration
+- React
+- Vite
+- React Router
+- JavaScript
+- CSS
+- ESLint
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Keyrsla á verkefni
+
+### 1. Klóna repo
+
+git clone <repo-slóð>
+cd <repo-nafn>
+
+### 2. Setja upp pakka
+
+npm install
+
+### 3. Búa til .env
+
+VITE_API_URL=http://localhost:3000
+
+### 4. Keyra verkefnið
+
+npm run dev
+
+Frontend keyrir þá á slóð eins og:
+
+http://localhost:5173
+
+
+## Lint
+Keyra ESLint með:
+
+npm run lint

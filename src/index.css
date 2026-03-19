@@ -53,6 +53,27 @@ a {
   background: white;
   padding: 1rem;
   border-radius: 8px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.news-card a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-weight: bold;
+  color: #0077ff;
+}
+
+.news-card h2 {
+  margin-bottom: 0.5rem;
+}
+
+.news-card p {
+  margin: 0.25rem 0;
+}
+
+.news-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
 .news-form {
@@ -72,15 +93,29 @@ a {
 }
 
 button {
-  padding: 0.75rem 1rem;
-  cursor: pointer;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  border: none;
+  background: #111;
+  color: white;
+  transition: opacity 0.2s;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 .pagination {
   display: flex;
   gap: 1rem;
   align-items: center;
-  margin-top: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
 }
 
 .error-message {
