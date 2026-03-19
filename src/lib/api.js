@@ -1,7 +1,12 @@
 const API_URL = import.meta.env.VITE_API_URL;
 
 export async function fetchNews(page = 1) {
-  const response = await fetch(`${API_URL}/news?page=${page}`);
+  const limit = 10;
+  const offset = (page - 1) * limit;
+
+  const response = await fetch(
+    `${API_URL}/news?limit=${limit}&offset=${offset}`
+  );
 
   if (!response.ok) {
     throw new Error('Ekki tókst að sækja fréttir');
@@ -10,8 +15,8 @@ export async function fetchNews(page = 1) {
   return response.json();
 }
 
-export async function fetchNewsById(id) {
-  const response = await fetch(`${API_URL}/news/${id}`);
+export async function fetchNewsBySlug(slug) {
+  const response = await fetch(`${API_URL}/news/${slug}`);
 
   if (response.status === 404) {
     return null;
@@ -43,14 +48,25 @@ export async function createNews(data) {
     body: JSON.stringify(data),
   });
 
-  if (response.status >= 500) {
-    throw new Error('Innri villa í vefþjónustu');
+  let result = null;
+
+  try {
+    result = await response.json();
+  } catch {
+    result = null;
   }
 
-  const result = await response.json().catch(() => null);
-
   if (!response.ok) {
-    throw new Error(result?.message || 'Villa við að búa til frétt');
+    if (response.status >= 500) {
+      throw new Error(result?.error || result?.message || '500 villa frá vefþjónustu');
+    }
+
+    throw new Error(
+      result?.error ||
+      result?.message ||
+      JSON.stringify(result) ||
+      'Villa við að búa til frétt'
+    );
   }
 
   return result;
